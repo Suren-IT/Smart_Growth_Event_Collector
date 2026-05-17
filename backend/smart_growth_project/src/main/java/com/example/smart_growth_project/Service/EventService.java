@@ -1,5 +1,6 @@
 package com.example.smart_growth_project.Service;
 
+
 import com.example.smart_growth_project.Repository.EventRepository;
 import com.example.smart_growth_project.Repository.SkillsRepository;
 import com.example.smart_growth_project.Repository.UserRepository;
@@ -45,7 +46,6 @@ public class EventService {
         List<Skill_Details> list =new  ArrayList<Skill_Details>(Arrays.asList(firstskill,secondskill,thirdskill));
 
 
-
         //1.I need to find the user ,2:set the list of skills using setter
         User_Details user = userrepo.findById(userId).orElse(null);
         user.setSkilllist(list);
@@ -64,3 +64,4 @@ public class EventService {
         return  eventrepo.findByTitle(eventName);
     }
 }
+

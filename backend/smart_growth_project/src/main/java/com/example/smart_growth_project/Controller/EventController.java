@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://127.0.0.1:5500")
 public class EventController {
 
     @Autowired
@@ -36,8 +37,8 @@ public class EventController {
     }
 
     //login
-    @PostMapping("/login/{email}/{password}")
-    public boolean loginUser(@PathVariable String email,@PathVariable String password){
+    @PostMapping("/login")
+    public boolean loginUser(@RequestParam String email,@RequestParam String password){
         return service.userLogin(email,password);
     }
 

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <div class="registerbody">
+        <h1 id="registerhead">User registration</h1>
+
+        <form action="" method="post" class="registerform">
+
+                <table class="formtable">
+                    <tr>
+                        <td><label for="name" >Enter User Name :</label></td>
+                        <td><input id="username" type="text" name="username" placeholder="username" ></td>
+                    </tr>
+                    <tr>
+                        <td><label for="email">Enter User email :</label></td>
+                        <td><input id="useremail" type="email" name="useremail" placeholder="useremail"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="password">Enter password :</label></td>
+                        <td><input id="password" type="password" name="password" placeholder="pass"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="role">Enter User role :</label></td>
+                        <td><input id="role" type="text" name="role" placeholder="role"></td>
+                    </tr>
+                    <tr>
+                        <td>Choose your three expertise</td>
+                        <td>
+                            Java <input type="checkbox" name="skills" value="java">
+                            Python <input type="checkbox" name="skills" value="python">
+                            SQL <input type="checkbox" name="skills" value="sql">
+                            C <input type="checkbox" name="skills" id="c">
+                            C++ <input type="checkbox" name="skills" id="Cplus">
+                            Java Script <input type="checkbox" name="skills" id="javascript">
+                        </td>
+                    </tr>
+
+
+                </table>
+
+        </form>
+
+        <button type="submit" id="registerbtn">submit</button>
+    </div>
+    
+</body>
+<script>
+           
+
+            
+
+            //2.I need to call api to register after that move to login page 
+            //1.fetch that api
+            let registerbtn = document.getElementById("registerbtn");
+            registerbtn.addEventListener("click",(e)=>{
+
+                e.preventDefault();
+
+                 //1.Get all the user info 
+                    let name = document.getElementById("username").value;
+                    let email = document.getElementById("useremail").value;
+                    let password = document.getElementById("password").value;
+                    let role = document.getElementById("role").value;
+
+                    //i need to store the list of skills in the userdata 
+                    //1.skilllist : ["java","python","C"]-> like this 
+                    //2.create a list skills 
+
+                    let selectedSkills = [];
+                    let checkbox = document.querySelectorAll('input[name=skills]:checked');
+                    //now insert each value into the selectedSkills
+                   checkbox.forEach((e)=>{
+                      selectedSkills.push(e.value);
+                   })
+
+                    console.log(selectedSkills+" ");
+                    
+
+                if (name === ""||email === ""||password ===""||role==="") {
+                        alert("enter all feilds "+name + " "+ role+" ");
+                }
+
+                //fetch 
+                fetch("http://localhost:8080/register",{
+                    method: "POST",
+                    headers :{
+                        "Content-Type":"application/json"
+                    },
+                    body:JSON.stringify({
+                        name:name,
+                        email:email,
+                        password:password,
+                        role:role
+                    })
+                }
+                   
+                )
+                .then((response => response.json()))
+                .then((data)=>{
+
+                    //if true then move to login page 
+                    if(data === true){
+                        window.location.href = "login.html";
+                    }
+                    else{
+                        alert("Something went wrong")
+                    }
+                })
+                .catch(error =>{
+                    alert("Error occurs");
+                })
+            })
+
+</script>
+</html>

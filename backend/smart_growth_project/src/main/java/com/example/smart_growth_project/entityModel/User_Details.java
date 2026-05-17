@@ -26,6 +26,7 @@ public class User_Details {
     private String role;
 
     @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "skill_list")
     private List<Skill_Details> skilllist;
 
 }

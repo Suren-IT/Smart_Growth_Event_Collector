@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="loginbody">
+        <h1>Login form</h1>
+        <form action="" method="post">
+
+            <table class="logintable">
+                <tr>
+                    <td><label for="email">Enter Email :</label></td>
+                    <td><input id="email" type="email" name="email" placeholder="email" ></td>
+                </tr>
+                <tr>
+                    <td><label for="pass">Enter password :</label></td>
+                    <td><input id="password" type="password" name="password" placeholder="password" ></td>
+                </tr>
+            </table>
+        </form>
+        <button id="submitbtn"> submit </button>
+    </div>
+</body>
+<script>
+    //i need to fetch the api and declare values on it 
+    document.getElementById("submitbtn").addEventListener("click",(e)=>{
+
+        //get login info
+        let email = document.getElementById("email").value;
+        let password = document.getElementById("password").value;
+
+        if (email ===""|| password ==="") {
+            alert("enter All feilds")
+        }
+
+        //fetch api
+        fetch(`http://localhost:8080/login`,{
+            method : "POST",
+            headers : {
+                 "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body:`email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`
+            
+        })
+        .then((response => response.json()))
+        .then((data)=>{
+
+            //if tru sent to the home page 
+            if(data === true){
+                window.location.href ="home.html";
+            }
+            else{
+                alert("Invalid login info try again");
+            }
+        })
+        .catch(error =>{
+            alert("Error occurs ");
+        })
+    })
+</script>
+</html>

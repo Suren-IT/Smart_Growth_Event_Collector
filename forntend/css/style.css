@@ -1,0 +1,92 @@
+/* Universal  */
+*{
+    padding: 0;
+    margin: 0;
+     box-sizing: border-box;
+}
+
+/* register page design */
+
+.registerbody{
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+}
+#registerhead{
+    align-items: center;
+    justify-content: center;
+}
+.formtable  tr{
+
+    height: 60px;
+
+
+}
+.formtable  tr td label{
+    font-size: 20px;
+}
+.formtable tr td input{
+    height: 40px;
+    border-radius: 12px;
+    outline: none;
+    cursor: pointer;
+    border:1px solid black;
+    padding: 5px;
+
+}
+.registerbody button{
+    height: 30px;
+    width: 80px;
+    border-radius: 12px;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    padding: 5px;
+
+}
+
+/* Login design */
+.loginbody{
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid red ;
+}
+.loginbody table tr td{
+
+    height: 80px;
+}
+.logintable  tr td label{
+
+    height: 80px;
+    font-size: 25px;
+}
+.logintable  tr td input{
+
+    height: 40px;
+    font-size: 25px;
+    position: relative;
+    left: 20px;
+    border-radius: 12px;
+    /* outline: none; */
+    cursor: pointer;
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.loginbody button{
+    height: 30px;
+    width: 80px;
+    border-radius: 12px;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    padding: 5px;
+
+}
