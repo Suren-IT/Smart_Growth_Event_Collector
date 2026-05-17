@@ -25,7 +25,7 @@ public class User_Details {
     @Column(nullable = false)
     private String role;
 
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "user")
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Skill_Details> skilllist;
 
 }

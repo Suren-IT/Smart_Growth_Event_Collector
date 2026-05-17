@@ -17,7 +17,9 @@ public class Skill_Details {
     @Column(nullable = false)
     private String skillName;
 
-    @ManyToOne
-    private User_Details user;
+
+    public Skill_Details(String skillName){
+        this.skillName=skillName;
+    }
 
 }

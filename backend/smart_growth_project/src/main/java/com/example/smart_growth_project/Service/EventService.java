@@ -1,0 +1,66 @@
+package com.example.smart_growth_project.Service;
+
+import com.example.smart_growth_project.Repository.EventRepository;
+import com.example.smart_growth_project.Repository.SkillsRepository;
+import com.example.smart_growth_project.Repository.UserRepository;
+import com.example.smart_growth_project.entityModel.Event_Details;
+import com.example.smart_growth_project.entityModel.Skill_Details;
+import com.example.smart_growth_project.entityModel.User_Details;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+@Service
+public class EventService {
+
+    //User repository
+    @Autowired
+    UserRepository userrepo;
+
+    @Autowired
+    SkillsRepository skillrepo;
+
+    @Autowired
+    EventRepository eventrepo;
+
+    //add user
+    public User_Details addUser(User_Details user) {
+        return userrepo.save(user);
+    }
+
+    public boolean userLogin(String email, String password) {
+
+        return userrepo.existsByEmailAndPassword(email,password);
+    }
+
+    public void addSkills(Integer userId, String skill1, String skill2, String skill3) {
+
+        //save all skills  -> only one time  so check before saving
+        Skill_Details firstskill = skillrepo.findBySkillName(skill1);
+        Skill_Details secondskill = skillrepo.findBySkillName(skill2);
+        Skill_Details thirdskill = skillrepo.findBySkillName(skill3);
+        List<Skill_Details> list =new  ArrayList<Skill_Details>(Arrays.asList(firstskill,secondskill,thirdskill));
+
+
+
+        //1.I need to find the user ,2:set the list of skills using setter
+        User_Details user = userrepo.findById(userId).orElse(null);
+        user.setSkilllist(list);
+        userrepo.save(user);
+
+
+
+    }
+
+    public List<Event_Details> getallEvents() {
+
+        return eventrepo.findAll();
+    }
+
+    public Event_Details getEventByName(String eventName) {
+        return  eventrepo.findByTitle(eventName);
+    }
+}
