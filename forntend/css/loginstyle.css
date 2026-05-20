@@ -1,0 +1,96 @@
+/* Universal  */
+*{
+    padding: 0;
+    margin: 0;
+     box-sizing: border-box;
+     font-family: 'Courier New', Courier, monospace;
+}
+
+
+/* Login design */
+
+.mainbody{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.navbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 20px;
+    width: 100vw;
+    padding: 20px;
+    border-bottom: 1px solid black;
+   
+    
+}
+.leftside a{
+    text-decoration: none;
+    color: black;
+    
+}
+.rightside a{
+    text-decoration: none;
+    color: black;
+}
+
+.divbody{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.loginbody{
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid red ; */
+    position: relative;
+    top: 20vh;
+}
+.loginbody table tr td{
+
+    /* height: 80px; */
+}
+.logintable  tr td label{
+
+    /* height: 80px; */
+    /* font-size: 25px; */
+}
+.logintable  tr td input{
+
+    /* height: 40px; */
+    font-size: 25px;
+    position: relative;
+    left: 20px;
+    border-radius: 12px;
+    /* outline: none; */
+    cursor: pointer;
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.loginbody button{
+    height: 30px;
+    width: 80px;
+    border-radius: 12px;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    padding: 5px;
+
+}
+
+.googlebutton{
+    height: 40px;
+    width: 80px;
+    position: relative;
+    top: 45vh;
+    left: 100px;
+    border: 1px solid red;
+}

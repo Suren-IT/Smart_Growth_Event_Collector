@@ -31,8 +31,8 @@
                         <td><input id="role" type="text" name="role" placeholder="role"></td>
                     </tr>
                     <tr>
-                        <td>Choose your three expertise</td>
-                        <td>
+                        <td style="color: aliceblue;">Skills: </td>
+                        <td class="skillcheckbox">
                             Java <input type="checkbox" name="skills" value="java">
                             Python <input type="checkbox" name="skills" value="python">
                             SQL <input type="checkbox" name="skills" value="sql">
@@ -42,8 +42,12 @@
                         </td>
                     </tr>
 
+                    
+
 
                 </table>
+                <hr class="line">
+                <a href="" class="logintag">Already a member ?</a>
 
         </form>
 
@@ -97,7 +101,8 @@
                         name:name,
                         email:email,
                         password:password,
-                        role:role
+                        role:role,
+                        skilllist:selectedSkills
                     })
                 }
                    

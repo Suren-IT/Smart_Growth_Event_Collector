@@ -1,0 +1,145 @@
+/* Home page design  */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.mainbody{
+    height: 100vh;
+    width: 100vw;
+}
+.rightside a img{
+
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+}
+.navbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+    padding: 3px;
+}
+.rightside a {
+    text-decoration: none;
+    color: black;
+    padding-left: 20px;
+    position: relative;
+    top: 5px;
+}
+
+.searchbar{
+    width: 100vw;
+    background-color: whitesmoke;
+    padding:15px;
+    display:flex;
+   
+    
+
+}
+.searchbar input{
+    width: 270px;
+    height: 40px;
+    padding-left: 20px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    position: relative;
+    left: -13px;
+    border-left: 1px solid black;
+    
+}
+.searchbar button{
+     width: 150px;
+    height: 40px;
+    border-radius: 12px;
+    position: relative;
+    left: 20px;
+    outline: none;
+    border: 1px solid black;
+    cursor: pointer;
+    background-color: steelblue;
+}
+#sal01{
+    position: absolute;
+    top: 45px;
+    right: 300px;
+    width: 100px;
+    border: 1px solid red;
+}
+
+/* Event pages */
+.eventpage{
+    padding: 1px;
+    width: 100vw;
+    height: 100vh;
+    border: 1px solid red;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: start;
+    
+
+}
+.eventpage #eventname{
+   display: flex ;
+   bottom: 20px;
+   
+}
+.events{
+   display:flex;
+   flex-direction: column;
+    padding: 2px;
+    width: 300px;
+    height: 220px;
+    border:1px solid red;
+    /* position: relative;
+    right: 150px;
+    top: 25px; */   
+    overflow: hidden;
+}
+.events .toppage{
+    padding: 1px;
+    border: 1px solid red;
+    display: flex;
+    justify-content: space-between;
+    height: 35px;
+}
+.events .toppage .top1 img{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+}
+.events .toppage .top2 i{
+    position: relative;
+    top: 5px;
+}
+.middlepage{
+    
+    max-width: 300px;
+     border: 1px solid red;
+     max-height: 150px;
+     overflow: hidden;
+     flex-direction: column;
+}
+.middlepage  .middle2 p{
+    font-size:small;
+    
+}
+.lastpage{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.lastpage button{
+    height: 20px;
+    width: 90px;
+    border: none;
+    border-radius: 12px;
+    padding: 1px;
+    cursor: pointer;
+    position: relative;
+    top: 30px;
+    
+}

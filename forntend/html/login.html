@@ -4,25 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/loginstyle.css">
 </head>
 <body>
-    <div class="loginbody">
-        <h1>Login form</h1>
-        <form action="" method="post">
+    <div class="mainbody">
+        <div class="navbar">
+                <div class="leftside">
+                    <a href="register.html"> back</a>
+                </div>
+                <div class="rightside">
+                    <a href="">create an account</a>
+                </div>
 
-            <table class="logintable">
-                <tr>
-                    <td><label for="email">Enter Email :</label></td>
-                    <td><input id="email" type="email" name="email" placeholder="email" ></td>
-                </tr>
-                <tr>
-                    <td><label for="pass">Enter password :</label></td>
-                    <td><input id="password" type="password" name="password" placeholder="password" ></td>
-                </tr>
-            </table>
-        </form>
-        <button id="submitbtn"> submit </button>
+        </div>
+        <div class="divbody">
+            <div class="loginbody">
+                <h1>Login form</h1>
+                <form action="" method="post">
+
+                    <table class="logintable">
+                        <tr>
+                            <td><label for="email">Enter Email :</label></td>
+                            <td><input id="email" type="email" name="email" placeholder="email" ></td>
+                        </tr>
+                        <tr>
+                            <td><label for="pass">Enter password :</label></td>
+                            <td><input id="password" type="password" name="password" placeholder="password" ></td>
+                        </tr>
+                    </table>
+                </form>
+                
+                <button id="submitbtn"> submit </button>
+            </div>
+            <!-- <div class="googlebutton">
+                <button>google </button>
+                <button>facebook</button>
+            </div> -->
+        </div>
+    
     </div>
 </body>
 <script>

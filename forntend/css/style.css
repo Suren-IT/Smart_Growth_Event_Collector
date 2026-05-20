@@ -7,6 +7,15 @@
 
 /* register page design */
 
+body{
+    background-image: url("/images/loginbg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: 'Courier New', Courier, monospace;
+
+    padding: 30px;
+    
+}
 .registerbody{
     align-items: center;
     justify-content: center;
@@ -15,9 +24,18 @@
     display: flex;
     flex-direction: column;
 }
+.registerform{
+    border: 1px solid ;color: aliceblue;
+    padding: 10px;
+    border-radius: 12px;
+    
+}
 #registerhead{
     align-items: center;
     justify-content: center;
+    position: relative;
+    bottom: 10px;
+    color: aliceblue;
 }
 .formtable  tr{
 
@@ -26,16 +44,25 @@
 
 }
 .formtable  tr td label{
-    font-size: 20px;
+    /* font-size: 5px; */
+    color: aliceblue;
 }
 .formtable tr td input{
-    height: 40px;
+    /* height: 40px; */
     border-radius: 12px;
     outline: none;
     cursor: pointer;
     border:1px solid black;
     padding: 5px;
 
+}
+.line{
+
+  border: none;
+  height: 3px;
+  background: linear-gradient(to right, #C77DFF, #8A2BE2, #0B0C10);
+  margin: 30px 0;
+  
 }
 .registerbody button{
     height: 30px;
@@ -45,7 +72,31 @@
     cursor: pointer;
     border: none;
     padding: 5px;
+    position: relative;
+    top: 10px;
+    background-color: lightskyblue;
 
+
+}
+.logintag{
+    text-decoration: none;
+    color: aliceblue;
+    position: relative;
+    left: 100px;
+}
+.logintag:hover{
+    color: #0B0C10;
+}
+
+.skillcheckbox{
+    width: 190px;
+    padding-left: 20px;
+    font-size: small;
+     border: 1px solid black;
+     position: relative;
+     right: 10px;
+     border-radius: 12px;
+     color: aliceblue;
 }
 
 /* Login design */
