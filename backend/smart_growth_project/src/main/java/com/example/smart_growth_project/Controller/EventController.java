@@ -7,6 +7,7 @@ import com.example.smart_growth_project.entityModel.User_Details;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -61,6 +62,24 @@ public class EventController {
     @GetMapping("/allevents/{eventname}")
     public Event_Details getAllEvents(@PathVariable String eventname){
         return service.getEventByName(eventname);
+    }
+
+
+    //get the api content with the restTempplate
+    @GetMapping("/api")
+    public String getApiData(){
+        return service.getApiData();
+    }
+
+    //get the api data useing the WebClient
+    @GetMapping("/dataofapi")
+    public String getadata(){
+        return  service.getdata();
+    }
+    //get data using Scrapping
+    @GetMapping("/scrapping")
+    public void getScrapping() throws IOException {
+          service.getScrapping();
     }
 
 }
