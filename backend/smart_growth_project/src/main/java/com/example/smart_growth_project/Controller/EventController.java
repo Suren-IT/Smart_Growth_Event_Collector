@@ -65,21 +65,6 @@ public class EventController {
     }
 
 
-    //get the api content with the restTempplate
-    @GetMapping("/api")
-    public String getApiData(){
-        return service.getApiData();
-    }
 
-    //get the api data useing the WebClient
-    @GetMapping("/dataofapi")
-    public String getadata(){
-        return  service.getdata();
-    }
-    //get data using Scrapping
-    @GetMapping("/scrapping")
-    public void getScrapping() throws IOException {
-          service.getScrapping();
-    }
 
 }
