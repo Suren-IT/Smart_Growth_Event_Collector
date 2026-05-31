@@ -1,0 +1,155 @@
+/*  DASHBOARD DESIGN */
+.main{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    
+}
+/* LEFTSIDE */
+.leftside{
+    height: 100vh;
+    width: 16%;
+    padding: 10px;
+    border: 1px solid red;
+}
+.leftside .topleft{
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    height: 30px;
+    width: auto;
+    border: 1px solid red;
+}
+.topleft .logo{
+    position: relative;
+    top: 15px;
+    display: flex;
+}
+.logoLetter{
+    position: relative;
+    bottom: 10px;
+    display: flex;
+}
+.middleleft{
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    border: 1px solid red;
+}
+.middleleft div a{
+    text-decoration: none;
+    color: black;
+
+}
+.bottomleft{
+    position: absolute;
+    bottom: 5px;
+    display: flex;
+    border: 1px solid red;
+    width: 145px;
+    gap: 10px;
+}
+.bottomleft div button{
+    border-radius: 12px;
+    border: none;
+    position: relative;
+    top: 10px;
+    width: 60px;
+    height: 30px;
+}
+/*  RIGHT SIDE  */
+.rightside{
+    width: 100vw;
+     border: 1px solid red;
+     padding: 10px;
+}
+.rightside .navbar{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid red;
+}
+.navleft{
+    /* border: 1px solid red; */
+    width: 200px;
+}
+.navleft  h3{
+    font-size: medium;
+    position: relative;
+    bottom: 10px;
+    display: flex;
+}
+.navleft  h6{
+    font-size: small;
+    position: relative;
+    bottom: 40px;
+    display: flex;
+}
+.navright{
+     /* border: 1px solid red; */
+     padding: 5px;
+     position: relative;
+     width: auto;
+}
+.navright input{
+    height: 30px;
+    width: 300px;
+    border-radius: 12px;
+    border: 1px solid black;
+    padding-left: 70px;
+    position: relative;
+    right: 20px;
+    
+
+}
+#searchicon{
+     position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: gray;
+}
+#bellicon{
+    position: relative;
+    right: 8px;
+}
+.navright img{
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+
+}
+
+/* CLASSIFIED BAR  */
+.classifingbar{
+    border: 1px solid red;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    gap: 50px;
+    padding: 2px;
+}
+.classifer-card{
+    border: 1px solid red ;
+    display: flex;
+    height: 90px;
+    width: 120px;
+    border-radius: 15px;
+    border: 1px solid lightblue;
+
+}
+
+.cardright i{
+    position: relative;
+    top: 40px;
+    left: 5px;
+    height: 20px;
+    width: 30px;
+}
+.cardleft p{
+    font-size: small;
+    position: relative;
+    bottom: 10px;
+}
