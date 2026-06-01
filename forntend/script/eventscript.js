@@ -4,6 +4,7 @@ window.addEventListener("load",()=>{
     console.log("loading is started ");
     loadAllEvents();
 
+
 });
 let allEvent=[];
 //HOME PAGE WHEN IT IS LOADING 
@@ -63,6 +64,7 @@ async function loadAllEvents() {
             return new Date(a.start) - new Date(b.start);
         });
 
+       localStorage.setItem("allEvent",JSON.stringify(allEvent));
        renderMixedEvents(allEvent);
 
     } catch (error) {
@@ -169,7 +171,7 @@ function renderMixedEvents(events){
 }
 
 // this is for search button
-let searchbtn = document.getElementById("serachbtn");
+let searchbtn = document.getElementById("searchbtn");
 
 //hackerearth fillter 
 let hackerearth = document.getElementById("hackerearth");

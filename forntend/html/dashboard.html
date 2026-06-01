@@ -6,6 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="/css/dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="main">
@@ -87,11 +88,33 @@
                 </div>
             </div>
             <!-- PLATFORM  -->
-            <div>
-                
+            <div class="pie-linechart">
+                <!-- PIE CHART -->
+                <div class="piechartClass">
+                    
+                    <div>
+                        <canvas id="pieChart"></canvas>
+                    </div>  
+                    <p>Events </p>
+                    <div id="legendChart"></div>
+                </div>
+
+                <!-- LINE CHART -->
+                <div class="linechartclass">
+                    <div class="topline">
+                        <p class="linehead">Events Trend</p>
+                    </div>
+                    <div class="bottomline">
+                        <canvas id="lineChart"></canvas>
+                    </div>
+                    
+                </div>
             </div>
-            <div></div>
+            <div>
+
+            </div>
         </div>
     </div>
 </body>
+<script src="/script/dashboard.js"></script>
 </html>
