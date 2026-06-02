@@ -9,6 +9,8 @@ function loadDashboard() {
     ) || [];
 
     createPieChart(events);
+    createLineChart(events);
+    createUpcoming(events);
     console.log(events);
    
 }
@@ -86,4 +88,148 @@ function buildLegend(platform, total, colors) {
             </div>
         `;
     });
+}
+
+// LINE CHART 
+function createLineChart(event){
+
+    let monthCount = {};
+
+    
+
+    event.forEach(event => {
+
+        let date =
+            event.date?.split("T")[0] ||
+            event.start?.split("T")[0];
+
+        if (!date) return;
+
+        let d = new Date();
+
+        // example: 2026-6
+        let key = `${d.getFullYear()}-${d.getMonth() + 1}`; 
+        
+
+        monthCount[key] = (monthCount[key] || 0) + 1;
+    });
+
+    // last 6 months range 
+    let labels=[];
+    let counts=[];
+
+    let today = new Date();
+    for(let i=0;i<6;i++){
+        let d = new Date();
+
+        d.setMonth(today.getMonth()+i);
+
+        let key = `${d.getFullYear()}-${d.getMonth() + 1}`; 
+
+        labels.push(
+            d.toLocaleDateString("en-US",{
+                month:"short"
+            })
+        );
+        counts.push(monthCount[key] || 0);
+
+    }
+
+    // LINE CHART DRAWING 
+    new Chart(lineChart, {
+        type: "line",
+        data: {
+            labels: labels,
+            datasets: [{
+                label: "Events",
+                data: counts,
+                borderColor: "#7F77DD",
+                backgroundColor: "rgba(127,119,221,0.12)",
+                borderWidth: 2,
+                pointBackgroundColor: "#7F77DD",
+                pointBorderColor: "#ffffff",
+                pointBorderWidth: 2,
+                pointRadius: 5,
+                fill: true,
+                tension: 0.4
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                x: {
+                    grid: { display: false }
+                },
+                y: {
+                    beginAtZero:true
+                }
+            }
+        }
+    });
+}
+
+// UPCOMING EVENTS 
+function createUpcoming(events) {
+
+    let today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    // 1. FILTER FUTURE EVENTS ONLY
+    let upcoming = events.filter(event => {
+
+        let dateStr =
+            event.date?.split("T")[0] ||
+            event.start?.split("T")[0];
+
+        if (!dateStr) return false;
+
+        let eventDate = new Date(dateStr);
+
+        return eventDate <= today;
+    });
+
+    // 2. SORT BY NEAREST DATE
+    upcoming.sort((a, b) => {
+        return new Date(a.date || a.start) - new Date(b.date || b.start);
+    });
+
+    console.log(upcoming);
+
+    // 3. TAKE ONLY TOP 5 (LIKE DASHBOARD CARD STYLE)
+    upcoming = upcoming.slice(-5);
+    // 4. RENDER TO UI
+    let container = document.getElementById("upcoming");
+
+    container.innerHTML = upcoming.map(event => {
+
+        let date = new Date(event.date || event.start);
+
+        return `
+            <div class="upcoming-card">
+                <div>
+                    <img src="/images/loginbg.jpg" alt="">
+                </div>
+                <div>
+                     <p>${event.event || "Online"}</p>
+                    <p>${event.resource.name || "Event"}</p>
+
+                </div>
+                <div>
+                    <p>${date.toDateString()}</p>
+                </div>
+                <div>
+                    <button>view </button>
+                </div>
+                
+                
+               
+            </div>
+        `;
+    }).join("");
 }

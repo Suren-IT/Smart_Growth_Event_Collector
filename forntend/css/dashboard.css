@@ -1,6 +1,6 @@
 /*  DASHBOARD DESIGN */
 .main{
-    height: 100vh;
+    height: 120vh;
     width: 100vw;
     display: flex;
     
@@ -45,6 +45,7 @@
 .bottomleft{
     position: absolute;
     bottom: 5px;
+    left: 10px;
     display: flex;
     border: 1px solid red;
     width: 145px;
@@ -66,25 +67,26 @@
 }
 .rightside .navbar{
     width: 100%;
-    height: 10%;
+    height: 30px;
     display: flex;
     justify-content: space-between;
     border: 1px solid red;
 }
+
 .navleft{
     /* border: 1px solid red; */
     width: 200px;
 }
 .navleft  h3{
-    font-size: medium;
+    font-size: small;
     position: relative;
     bottom: 10px;
     display: flex;
 }
 .navleft  h6{
-    font-size: small;
+    font-size: xx-small;
     position: relative;
-    bottom: 40px;
+    bottom: 30px;
     display: flex;
 }
 .navright{
@@ -94,13 +96,14 @@
      width: auto;
 }
 .navright input{
-    height: 30px;
+    height: 20px;
     width: 300px;
     border-radius: 12px;
     border: 1px solid black;
     padding-left: 70px;
     position: relative;
     right: 20px;
+    bottom: 5px;
     
 
 }
@@ -114,6 +117,7 @@
 #bellicon{
     position: relative;
     right: 8px;
+    bottom: 5px;
 }
 .navright img{
     height: 20px;
@@ -126,7 +130,7 @@
 .classifingbar{
     border: 1px solid red;
     width: 100%;
-    height: 100px;
+    height: 60px;
     display: flex;
     gap: 50px;
     padding: 2px;
@@ -134,7 +138,7 @@
 .classifer-card{
     border: 1px solid red ;
     display: flex;
-    height: 90px;
+    height: 100%;
     width: 120px;
     border-radius: 15px;
     border: 1px solid lightblue;
@@ -143,22 +147,22 @@
 
 .cardright i{
     position: relative;
-    top: 40px;
+    top: 20px;
     left: 5px;
     height: 20px;
     width: 30px;
 }
 .cardleft p{
-    font-size: small;
+    font-size: xx-small;
     position: relative;
-    bottom: 10px;
+    
 }
 
 /* PIE CHART START  */
 .pie-linechart{
     display: flex;
     border:  1px solid red;
-    height: 230px;
+    height: 200px;
     width: 100%;
 }
 .piechartClass{
@@ -197,22 +201,71 @@
     display: flex;
     flex-direction: column;
     border:  1px solid red;
-    height: 98%;
+    height: 100%;
     width: 490px;
 
 }
-.linehead{
-    height: 20px;
-    width: 150px;
+#linehead{
+    font-size: small;
     border:  1px solid red;
     position: relative;
     bottom: 12px;
+}
+
+.bottomline{
+    height: 175px;
+    width: 100%;
 }
 #lineChart{
    
     border:  1px solid black;
     position: relative;
-    bottom: 20px;
-    height:190px;
+    bottom: 20px;   
+    width: 100% !important;
+    height: 100% !important;
+
+}
+.upcomingevents{
+    height: 200px;
     width: 100%;
+    display: flex;
+    border: 1px solid black;
+}
+#upcoming{
+    height: 100%;
+    width: 75%;
+    border: 1px solid red;
+}
+.categories{
+    height: 100%;
+    width: 100%;
+    border: 1px solid rebeccapurple;
+}
+.upcoming-card{
+    padding: 2px;
+    width: 99%;
+    height: 17.5%;
+    display: flex;
+    border: 1px solid red;
+    gap: 35px;
+
+}
+.upcoming-card p{
+    font-size: x-small;
+    position: relative;
+    bottom:8px;
+    right: 10px;
+}
+.upcoming-card img{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+}
+.upcoming-card button{
+    border-radius: 15px;
+    border: none;
+    height: 20px;
+    width: 70px;
+    position: relative;
+    top: 10px;
 }

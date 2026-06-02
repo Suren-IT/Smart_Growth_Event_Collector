@@ -150,7 +150,7 @@ public class ApiService {
                 + "&upcoming=true"
                 + "&format=json"
                 + "&order_by=start"
-                + "&limit=20";
+                + "&limit=34";
 
         String response = restTemplate.getForObject(api,String.class);
         cacheMap.put(id,response);
