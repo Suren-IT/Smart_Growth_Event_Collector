@@ -11,6 +11,7 @@ function loadDashboard() {
     createPieChart(events);
     createLineChart(events);
     createUpcoming(events);
+    createInfoBoxes(events);
     console.log(events);
    
 }
@@ -213,7 +214,7 @@ function createUpcoming(events) {
         return `
             <div class="upcoming-card">
                 <div>
-                    <img src="/images/loginbg.jpg" alt="">
+                    <img src="${event.logo}" alt="">
                 </div>
                 <div>
                      <p>${event.event || "Online"}</p>
@@ -224,7 +225,11 @@ function createUpcoming(events) {
                     <p>${date.toDateString()}</p>
                 </div>
                 <div>
-                    <button>view </button>
+                    <button id="eventlink"><a href="${event.href}">${event.resource.name || "Event"}</a></button>
+                </div>
+                
+                <div>
+                    <button id="viewid">view </button>
                 </div>
                 
                 
@@ -232,4 +237,83 @@ function createUpcoming(events) {
             </div>
         `;
     }).join("");
+    
+}
+
+
+// INFO BOXES 
+function createInfoBoxes(event){
+
+    let card = document.getElementById("classbar");
+
+    card.innerHTML ="";
+
+    //return the inner html 
+    card.innerHTML +=`
+        <div class="classifer-card">
+                    <div class="cardright"><i  class="fa-regular fa-bell"></i></div>
+                    <div class="cardleft">
+                        <p>Total events </p>
+                        <p>${event.length}</p>
+                        <p>All upcming events</p>
+                    </div>
+
+        </div>
+        <div class="classifer-card">
+                    <div class="cardright"><i  class="fa-regular fa-bell"></i></div>
+                    <div class="cardleft">
+                        <p>This month</p>
+                        <p>${thismonth(event)}</p>
+                        <p>event this month</p>
+                    </div>
+
+        </div>
+        <div class="classifer-card">
+                    <div class="cardright"><i  class="fa-regular fa-bell"></i></div>
+                    <div class="cardleft">
+                        <p>Saved event</p>
+                        <p>${thismonth(event)}</p>
+                        <p>your saved event</p>
+                    </div>
+
+        </div>
+        <div class="classifer-card">
+                    <div class="cardright"><i  class="fa-regular fa-bell"></i></div>
+                    <div class="cardleft">
+                        <p>Participated event</p>
+                        <p>${thismonth(event)}</p>
+                        <p>your Participation</p>
+                    </div>
+
+        </div>
+        <div class="classifer-card">
+                    <div class="cardright"><i  class="fa-regular fa-bell"></i></div>
+                    <div class="cardleft">
+                        <p>win rate</p>
+                        <p>${thismonth(event)}</p>
+                        <p>success rate </p>
+                    </div>
+
+        </div>
+    `
+}
+// calculate the this week functions
+function thismonth(event) {
+    
+    //find the this week event and take the length 
+    let  eventCount =0;
+
+    let month = new Date().getMonth();
+    console.log(month);
+    event.forEach(event=>{
+
+        let mounthnumber = event.start?.split("T")[0].slice(6,8);
+        if (mounthnumber  == month) {
+            console.log(monthCount);
+            eventCount+=1;
+        }
+
+    })
+    return eventCount;
+
 }

@@ -3,7 +3,7 @@ package com.example.smart_growth_project.Service;
 import com.example.smart_growth_project.Repository.EventRepository;
 import com.example.smart_growth_project.Repository.SkillsRepository;
 import com.example.smart_growth_project.Repository.UserRepository;
-import com.example.smart_growth_project.entityModel.Event_Details;
+import com.example.smart_growth_project.entityModel.Saved_Event_Details;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +22,7 @@ public class AdminService {
     @Autowired
     EventRepository eventrepo;
 
-    public boolean addEvent(Event_Details event) {
+    public boolean addEvent(Saved_Event_Details event) {
 
         eventrepo.save(event);
         return true;
@@ -34,13 +34,13 @@ public class AdminService {
          return true;
     }
 
-    public boolean updateEvent(Event_Details event) {
+    public boolean updateEvent(Saved_Event_Details event) {
 
         eventrepo.save(event);
         return true;
     }
 
-    public Event_Details getEvent(Integer eventid) {
+    public Saved_Event_Details getEvent(Integer eventid) {
 
         return eventrepo.findById(eventid).orElse(null);
 

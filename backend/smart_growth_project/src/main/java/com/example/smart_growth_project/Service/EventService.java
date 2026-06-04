@@ -1,32 +1,15 @@
 package com.example.smart_growth_project.Service;
 
 
-import com.example.smart_growth_project.Configuration.AppConfig;
 import com.example.smart_growth_project.Repository.EventRepository;
 import com.example.smart_growth_project.Repository.SkillsRepository;
 import com.example.smart_growth_project.Repository.UserRepository;
-import com.example.smart_growth_project.entityModel.Event_Details;
+import com.example.smart_growth_project.entityModel.Saved_Event_Details;
 import com.example.smart_growth_project.entityModel.Skill_Details;
 import com.example.smart_growth_project.entityModel.User_Details;
-import org.jsoup.Connection;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.client.RestTemplate;
-import org.springframework.web.reactive.function.client.WebClient;
 
-import java.io.IOException;
-import java.lang.annotation.Documented;
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -73,15 +56,19 @@ public class EventService {
 
     }
 
-    public List<Event_Details> getallEvents() {
+    public List<Saved_Event_Details> getallEvents() {
 
         return eventrepo.findAll();
     }
 
-    public Event_Details getEventByName(String eventName) {
+    public Saved_Event_Details getEventByName(String eventName) {
         return  eventrepo.findByTitle(eventName);
     }
 
 
+    public List<Saved_Event_Details> getEventsByEmail() {
+
+        return eventrepo.findAllByUseremail();
+    }
 }
 

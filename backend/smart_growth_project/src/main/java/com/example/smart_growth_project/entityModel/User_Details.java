@@ -29,4 +29,5 @@ public class User_Details {
     @JoinColumn(name="user_id")
     private List<Skill_Details> skilllist;
 
+
 }

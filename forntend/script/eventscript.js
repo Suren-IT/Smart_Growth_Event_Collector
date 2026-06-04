@@ -99,7 +99,7 @@ function renderMixedEvents(events){
                     </div>
 
                     <div class="top2">
-                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <button onclick="savedEvents('${eventdetails.event}', '${eventdetails.resource?.name}', '${eventdetails.start}', '${eventdetails.href}')"><i class="fa-regular fa-bookmark"></i></button>
                     </div>
 
                 </div>
@@ -302,4 +302,42 @@ function searching() {
         );
         console.log(fillterEvents);
         renderMixedEvents(fillterEvents);
+}
+
+
+
+
+// SAVED Events
+
+function savedEvents(title,platform,deadline,link){
+
+    let email = localStorage.getItem("email");
+    
+    fetch("http://localhost:8080/addevent" , {
+        method: "POST",
+        headers: {                    
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            title: title,
+            platform: platform,
+            deadline: deadline,
+            link: link,
+            useremail : email
+        })
+        
+     })
+     .then(response => response.json())
+     .then(data =>{
+        if (data === true) {
+            alert("okey book marked ");
+        }
+        else{
+            alert("something went wrong ");
+        }
+     })
+     .catch(err => {
+        console.error("Fetch error:", err);
+        alert("Network error.");
+    });
 }

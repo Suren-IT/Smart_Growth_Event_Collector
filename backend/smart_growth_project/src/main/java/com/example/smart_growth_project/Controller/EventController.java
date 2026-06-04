@@ -1,13 +1,11 @@
 package com.example.smart_growth_project.Controller;
 
 import com.example.smart_growth_project.Service.EventService;
-import com.example.smart_growth_project.entityModel.Event_Details;
-import com.example.smart_growth_project.entityModel.Skill_Details;
+import com.example.smart_growth_project.entityModel.Saved_Event_Details;
 import com.example.smart_growth_project.entityModel.User_Details;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -54,14 +52,21 @@ public class EventController {
 
     //View Events  get all events that are matching with skillset
     @GetMapping("/allevents")
-    public List<Event_Details> getAllEvents(){
+    public List<Saved_Event_Details> getAllEvents(){
         return service.getallEvents();
     }
 
     //search by event Name
     @GetMapping("/allevents/{eventname}")
-    public Event_Details getAllEvents(@PathVariable String eventname){
+    public Saved_Event_Details getAllEvents(@PathVariable String eventname){
         return service.getEventByName(eventname);
+    }
+
+
+    // Fetch events by the email
+    @GetMapping("/getemail")
+    public List<Saved_Event_Details> getEvents(){
+        return service.getEventsByEmail();
     }
 
 

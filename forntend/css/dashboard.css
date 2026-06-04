@@ -1,6 +1,6 @@
 /*  DASHBOARD DESIGN */
 .main{
-    height: 120vh;
+    height: 100vh;
     width: 100vw;
     display: flex;
     
@@ -230,11 +230,14 @@
     width: 100%;
     display: flex;
     border: 1px solid black;
+    justify-content: space-evenly;
 }
 #upcoming{
     height: 100%;
-    width: 75%;
+    width: 100%;
     border: 1px solid red;
+    padding:8px;
+  
 }
 .categories{
     height: 100%;
@@ -247,7 +250,7 @@
     height: 17.5%;
     display: flex;
     border: 1px solid red;
-    gap: 35px;
+    gap: 100px;
 
 }
 .upcoming-card p{
@@ -261,7 +264,19 @@
     width: 30px;
     border-radius: 50%;
 }
-.upcoming-card button{
+.upcoming-card #eventlink{
+    border-radius: 15px;
+    border: none;
+    height: 20px;
+    width: 120px;
+    position: relative;
+    top: 5px;
+}
+.upcoming-card #eventlink  a{
+    text-decoration: none;
+    color: black;
+}
+.upcoming-card #viewid{
     border-radius: 15px;
     border: none;
     height: 20px;
