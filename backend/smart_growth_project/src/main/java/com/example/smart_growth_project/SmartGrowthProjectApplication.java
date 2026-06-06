@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SmartGrowthProjectApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(SmartGrowthProjectApplication.class, args);
 	}
 

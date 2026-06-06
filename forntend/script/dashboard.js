@@ -3,7 +3,7 @@
 //GET THE ALL EVENTS 
 window.addEventListener("load",loadDashboard);
 
-function loadDashboard() {
+ async function loadDashboard() {
     const events = JSON.parse(
         localStorage.getItem("allEvent")
     ) || [];
@@ -12,7 +12,10 @@ function loadDashboard() {
     createLineChart(events);
     createUpcoming(events);
     createInfoBoxes(events);
-    console.log(events);
+    //to calclulate the saved events 
+    const count = await savedEvents();
+     document.getElementById("savedevent").innerHTML =count; 
+    // console.log(events);
    
 }
 //PIE CHART
@@ -272,7 +275,7 @@ function createInfoBoxes(event){
                     <div class="cardright"><i  class="fa-regular fa-bell"></i></div>
                     <div class="cardleft">
                         <p>Saved event</p>
-                        <p>${thismonth(event)}</p>
+                        <p id="savedevent"></p>
                         <p>your saved event</p>
                     </div>
 
@@ -281,7 +284,7 @@ function createInfoBoxes(event){
                     <div class="cardright"><i  class="fa-regular fa-bell"></i></div>
                     <div class="cardleft">
                         <p>Participated event</p>
-                        <p>${thismonth(event)}</p>
+                        <p></p>
                         <p>your Participation</p>
                     </div>
 
@@ -290,7 +293,7 @@ function createInfoBoxes(event){
                     <div class="cardright"><i  class="fa-regular fa-bell"></i></div>
                     <div class="cardleft">
                         <p>win rate</p>
-                        <p>${thismonth(event)}</p>
+                        <p></p>
                         <p>success rate </p>
                     </div>
 
@@ -304,7 +307,6 @@ function thismonth(event) {
     let  eventCount =0;
 
     let month = new Date().getMonth();
-    console.log(month);
     event.forEach(event=>{
 
         let mounthnumber = event.start?.split("T")[0].slice(6,8);
@@ -314,6 +316,25 @@ function thismonth(event) {
         }
 
     })
+
     return eventCount;
 
+}
+
+// SAVED EVENTS
+
+async function savedEvents() {
+    try {
+        const response = await fetch(
+            `http://localhost:8080/finduser/${localStorage.getItem("email")}`
+        );
+
+        const data = await response.json();
+
+        return data.length;
+
+    } catch (error) {
+        console.error(error);
+        return 0;
+    }
 }

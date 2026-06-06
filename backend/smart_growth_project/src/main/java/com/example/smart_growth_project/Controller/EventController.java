@@ -64,10 +64,12 @@ public class EventController {
 
 
     // Fetch events by the email
-    @GetMapping("/getemail")
-    public List<Saved_Event_Details> getEvents(){
-        return service.getEventsByEmail();
+    @GetMapping("/finduser/{email}")
+    public List<Saved_Event_Details> getUserbyEmail(@PathVariable("email") String email){
+         return service.getSavedEventByUserEmail(email);
+
     }
+
 
 
 

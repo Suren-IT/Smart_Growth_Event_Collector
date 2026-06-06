@@ -11,5 +11,6 @@ public interface EventRepository extends JpaRepository<Saved_Event_Details,Integ
     Saved_Event_Details findByTitle(String eventName);
 
 
-    List<Saved_Event_Details> findAllByUseremail();
+
+    List<Saved_Event_Details> findByUseremail(String email);
 }

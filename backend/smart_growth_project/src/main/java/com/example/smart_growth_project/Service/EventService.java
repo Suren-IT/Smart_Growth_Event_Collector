@@ -66,9 +66,11 @@ public class EventService {
     }
 
 
-    public List<Saved_Event_Details> getEventsByEmail() {
 
-        return eventrepo.findAllByUseremail();
+    public List<Saved_Event_Details> getSavedEventByUserEmail(String email) {
+
+        return  eventrepo.findByUseremail(email);
     }
+
 }
 
