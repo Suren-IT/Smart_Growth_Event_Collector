@@ -244,9 +244,20 @@ function renderEvents(events,logo){
                         
                     </div>
                     <div class="lastpage">
-                        <div class="btn1"><button>Details</button></div>
-                        <div class="btn2"><button>Apply</button></div>
+
+                    <div class="btn1">
+                        <button>
+                            Details
+                        </button>
                     </div>
+
+                    <div class="btn2">
+                        <button onclick="window.open('${eventdetails.href}','_blank')">
+                            Apply
+                        </button>
+                    </div>
+
+                </div>
                 </div>
         `;
 
@@ -257,7 +268,7 @@ function renderEvents(events,logo){
 
 //search btn
 searchbtn.addEventListener("click",()=>{
-        if (document.getElementById("searchinput").value == "") {
+        if ((document.getElementById("searchinput").value == "" && document.getElementById("platforminput").value=="") || document.getElementById("duration").value == ""  ) {
             alert("please enter something");
         }
         else{
@@ -295,10 +306,14 @@ codeforces.addEventListener("click",()=>{
 
 function searching() {
     let keyword = document.getElementById("searchinput").value.toLowerCase();
+    let platform = document.getElementById("platforminput").value.toLowerCase();
         let fillterEvents = allEvent.filter(eventdetails =>
             eventdetails.event
             .toLowerCase()
-            .includes(keyword)
+            .includes(keyword) || 
+            eventdetails.resource.name
+            .toLowerCase()
+            .includes(platform)
         );
         console.log(fillterEvents);
         renderMixedEvents(fillterEvents);
