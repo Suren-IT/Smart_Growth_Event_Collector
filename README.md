@@ -1,42 +1,199 @@
-🚀 Event Collector Project
+# Smart Growth Event Collector
 
-A full-stack web application that consolidates coding and tech event data from multiple platforms into a single system, making event discovery faster, organized, and more efficient.
+A full-stack event aggregation platform built using Java, Spring Boot, Hibernate, MySQL, HTML, CSS, and JavaScript that collects events from multiple external platforms and presents them through a single unified dashboard.
 
-⚙️ Tech Stack
+---
 
-Java • Spring Boot • MySQL • HTML • CSS • JavaScript • Spring WebClient • Hibernate
+## Problem Statement
 
-✨ Key Features
-Aggregates event data from multiple external APIs into one platform
-Stores and manages structured event information in a database
-User-specific saved events tracking system
-Dashboard displaying event insights (counts & categories)
-Responsive UI with real-time updates using asynchronous JavaScript
-🔗 API Integration
-Integrated external event APIs using Spring WebClient
-Processed and transformed API data before persisting in database
-Implemented proper error handling for failed or inconsistent API responses
-🗄️ Backend System
-Developed RESTful APIs for event operations (CRUD)
-Implemented user-based event tracking logic
-Designed and mapped entities using Hibernate for relational structure
-📊 Dashboard Analytics
-Displays total saved events per user
-Category-wise event distribution view
-Dynamic UI updates based on backend data changes
-🧠 Problem Solved (Impact Section)
+Users interested in coding contests, workshops, hackathons, and technical events often need to visit multiple platforms such as LeetCode, HackerRank, and other event websites to track upcoming opportunities.
 
-In real-world usage, developers and students waste significant time searching for coding events across multiple platforms like different websites and APIs.
+This process is repetitive, time-consuming, and inefficient.
 
-This project solves that by:
+Smart Growth Event Collector solves this problem by automatically collecting event data from multiple sources and displaying it in a centralized platform where users can discover, search, filter, and manage events from one place.
 
-Bringing all event sources into a single unified system
-Eliminating repetitive manual searching across platforms
-Reducing time and effort in finding relevant events
-Providing a structured dashboard for quick decision-making
+---
 
-👉 Result: Faster access to relevant events and improved productivity
+## Key Features
 
-👨‍💻 Author
+### Event Aggregation
+- Fetches events from external APIs
+- Processes and normalizes incoming data
+- Stores event information in a centralized database
 
-Suren S
+### Event Discovery
+- Search events using keywords
+- Filter by category
+- Filter by platform
+- Filter by location
+
+### User Management
+- User Registration
+- User Login
+- Saved Events Tracking
+
+### Analytics Dashboard
+- Event statistics
+- Category-wise analytics
+- Platform-wise analytics
+- Interactive charts and visual insights
+
+---
+
+## Tech Stack
+
+### Backend
+- Java
+- Spring Boot
+- Spring MVC
+- Hibernate (JPA)
+- Spring WebClient
+- REST APIs
+
+### Frontend
+- HTML5
+- CSS3
+- JavaScript
+
+### Database
+- MySQL
+
+### Tools
+- Git
+- GitHub
+- Maven
+- Postman
+- IntelliJ IDEA
+
+---
+
+## Architecture
+
+External Event APIs
+        ↓
+Spring WebClient
+        ↓
+Spring Boot Application
+        ↓
+Hibernate (JPA)
+        ↓
+MySQL Database
+        ↓
+REST APIs
+        ↓
+Frontend Dashboard
+
+---
+
+## Screenshots
+
+### Login Page
+![Login](screenshoots/login.jpeg)
+
+### Registration Page
+![Register](screenshoots/register.jpeg)
+
+### Home Page
+![Home](screenshoots/home.jpeg)
+
+### Event Display
+![Events](screenshoots/display.jpeg)
+
+### Dashboard
+![Dashboard](screenshoots/dashboard.jpeg)
+
+### Dashboard Analytics
+![Dashboard Analytics](screenshoots/dashboard2.jpeg)
+
+
+
+## What I Implemented
+
+- Designed and developed a complete Spring Boot backend application
+- Integrated external event APIs using Spring WebClient
+- Built RESTful APIs for event management
+- Implemented Hibernate JPA for database persistence
+- Designed MySQL database schema and entity relationships
+- Developed responsive frontend interfaces using HTML, CSS, and JavaScript
+- Created analytics dashboards for event insights
+- Managed version control using Git and GitHub
+
+---
+
+## Technical Highlights
+
+### API Integration
+- Consumed external event APIs
+- Transformed API responses before persistence
+- Implemented error handling for API failures
+
+### Database Design
+- Entity relationship mapping using Hibernate
+- Optimized event storage and retrieval
+- Structured relational database design
+
+### Backend Development
+- Layered architecture
+- RESTful API design
+- Service-based business logic
+- MVC pattern implementation
+
+---
+
+## Future Enhancements
+
+- JWT Authentication
+- Role-Based Access Control
+- Email Notifications
+- Real-Time Event Updates
+- Cloud Deployment
+
+---
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/Suren-IT/Smart_Growth_Event_Collector.git
+```
+
+Navigate to the project:
+
+```bash
+cd Smart_Growth_Event_Collector
+```
+
+Configure MySQL credentials in:
+
+```properties
+application.properties
+```
+
+Run the application:
+
+```bash
+mvn spring-boot:run
+```
+
+---
+
+## Author
+
+### Suren S
+Java Full Stack Developer
+
+GitHub:
+https://github.com/Suren-IT
+
+LinkedIn:
+[YOUR_LINKEDIN_URL](https://www.linkedin.com/in/suren-s-it)
+
+Email:
+ssuren2021@gmail.com
+
+---
+
+## Project Goal
+
+This project was developed to demonstrate practical experience in Java backend development, REST API integration, database management, and full-stack application development using industry-standard technologies.
