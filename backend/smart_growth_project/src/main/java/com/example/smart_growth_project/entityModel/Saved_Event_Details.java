@@ -20,6 +20,5 @@ public class Saved_Event_Details {
     private String platform;
     private String deadline;
     private String link;
-
     private String useremail;
 }

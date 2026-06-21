@@ -22,16 +22,16 @@ public class AdminService {
     @Autowired
     EventRepository eventrepo;
 
-    public boolean addEvent(Saved_Event_Details event) {
+    public Saved_Event_Details addEvent(Saved_Event_Details event) {
 
-        eventrepo.save(event);
-        return true;
+       return  eventrepo.save(event);
+
     }
 
-    public boolean deleteEvent(Integer eventid) {
+    public void deleteEvent(Integer eventid) {
 
          eventrepo.deleteById(eventid);
-         return true;
+
     }
 
     public boolean updateEvent(Saved_Event_Details event) {
@@ -44,5 +44,9 @@ public class AdminService {
 
         return eventrepo.findById(eventid).orElse(null);
 
+    }
+
+    public boolean checkEvent(Integer eventid) {
+        return eventrepo.existsById(eventid);
     }
 }

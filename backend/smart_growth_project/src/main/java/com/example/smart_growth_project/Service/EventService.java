@@ -61,16 +61,20 @@ public class EventService {
         return eventrepo.findAll();
     }
 
-    public Saved_Event_Details getEventByName(String eventName) {
-        return  eventrepo.findByTitle(eventName);
+    public List<Saved_Event_Details> getEventByName(String eventName) {
+        eventName = eventName.trim();
+        return  eventrepo.findByTitleIgnoreCase(eventName);
     }
 
 
 
-    public List<Saved_Event_Details> getSavedEventByUserEmail(String email) {
+    public Saved_Event_Details getSavedEventByUserEmail(String email) {
 
         return  eventrepo.findByUseremail(email);
     }
 
+    public Saved_Event_Details checkUser(Integer userId) {
+        return eventrepo.findById(userId).orElse(null);
+    }
 }
 

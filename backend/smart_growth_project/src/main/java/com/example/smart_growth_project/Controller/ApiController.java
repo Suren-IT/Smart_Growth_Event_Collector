@@ -2,6 +2,7 @@ package com.example.smart_growth_project.Controller;
 
 import com.example.smart_growth_project.Service.ApiService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,14 +25,23 @@ public class ApiController {
 
     //get the api content with the restTempplate
     @GetMapping("/api")
-    public String getApiData(){
-        return service.getApiData();
+    public ResponseEntity<?> getApiData(){
+        String s1 = service.getApiData();
+        if(s1!=null){
+            return ResponseEntity.ok(s1);
+        }
+        return ResponseEntity.notFound().build();
     }
 
     //get the api data useing the WebClient
     @GetMapping("/dataofapi")
-    public String getadata(){
-        return  service.getdata();
+    public ResponseEntity<?> getadata(){
+
+        String s1 = service.getdata();
+        if(s1!=null){
+            return ResponseEntity.ok(s1);
+        }
+        return ResponseEntity.notFound().build();
     }
     //get data using Scrapping
     @GetMapping("/scrapping")
@@ -41,30 +51,54 @@ public class ApiController {
 
     //form here on I will go one by one platform
     @GetMapping("/hackerearth")
-    public String getHackerEarth(){
-        return  service.getAllEvents(73);
+    public ResponseEntity<?> getHackerEarth(){
+        String s1 =  service.getAllEvents(73);
+        if(s1!=null){
+            return ResponseEntity.ok(s1);
+        }
+        return ResponseEntity.notFound().build();
     }
 
     //leetcode
     @GetMapping("/leetcode")
-    public  String getLeetcode(){
-        return  service.getAllEvents(102);
+    public  ResponseEntity<?> getLeetcode(){
+
+        String s1 =service.getAllEvents(102);
+        if(s1!=null){
+            return ResponseEntity.ok(s1);
+        }
+        return ResponseEntity.notFound().build();
     }
 
     //hackerrank
     @GetMapping("hackerrank")
-    public String gethackrank(){
-        return service.getAllEvents(63);
+    public ResponseEntity<?> gethackrank(){
+
+        String s1 = service.getAllEvents(63);
+        if(s1!=null){
+            return ResponseEntity.ok(s1);
+        }
+        return ResponseEntity.notFound().build();
     }
 
     //codeCheff
     @GetMapping("/codecheff")
-    public String getCodeCheff(){
-        return  service.getAllEvents(2);
+    public ResponseEntity<?> getCodeCheff(){
+
+        String s1 =  service.getAllEvents(2);
+        if(s1!=null){
+            return ResponseEntity.ok(s1);
+        }
+        return ResponseEntity.notFound().build();
     }
     @GetMapping("/codeforces")
-    public String getCodeForces(){
-        return service.getAllEvents(1);
+    public ResponseEntity<?> getCodeForces(){
+
+        String s1 = service.getAllEvents(1);
+        if(s1!=null){
+            return ResponseEntity.ok(s1);
+        }
+        return ResponseEntity.notFound().build();
     }
 
 
