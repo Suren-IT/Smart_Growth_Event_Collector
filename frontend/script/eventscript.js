@@ -3,6 +3,7 @@
 window.addEventListener("load",()=>{
     console.log("loading is started ");
     loadAllEvents();
+    console.log("loading is ended ")
 
 
 });
@@ -18,23 +19,23 @@ async function loadAllEvents() {
         const appList=[
             {
                 url:"http://localhost:8080/hackerearth",
-                logo:"/images/HackerEarth-Logo.jpg"
+                logo:"/frontend/images/HackerEarth-Logo.jpg"
             },
             {
                 url:"http://localhost:8080/leetcode",
-                logo:"/images/LeetCode_logo.png"
+                logo:"/frontend/images/LeetCode_logo.png"
             },
             {
                 url:"http://localhost:8080/hackerrank",
-                logo:"/images/hackerrank-logo.jpg"
+                logo:"/frontend/images/hackerrank-logo.jpg"
             },
             {
                 url:"http://localhost:8080/codecheff",
-                logo:"/images/HackerEarth-Logo.jpg"
+                logo:"/frontend/images/HackerEarth-Logo.jpg"
             },
             {
                 url:"http://localhost:8080/codeforces",
-                logo:"/images/CodeForces_Cover.jpg"
+                logo:"/frontend/images/CodeForces_Cover.jpg"
             }
         ];
 
@@ -280,27 +281,27 @@ searchbtn.addEventListener("click",()=>{
 //hackerearth btn 
 hackerearth.addEventListener("click",()=>{
 
-        fetchEvents("http://localhost:8080/hackerearth" , "/images/HackerEarth-Logo.jpg");
+        fetchEvents("http://localhost:8080/hackerearth" , "/frontend/images/HackerEarth-Logo.jpg");
 
 });
 //leetcodebtn
 leetcode.addEventListener("click",()=>{
 
-        fetchEvents("http://localhost:8080/leetcode" , "/images/LeetCode_logo.png");
+        fetchEvents("http://localhost:8080/leetcode" , "/frontend/images/LeetCode_logo.png");
 
 });
 
 //hackerrank btn 
 hackrank.addEventListener("click",()=>{
-        fetchEvents("http://localhost:8080/hackerrank" , "/images/hackerrank-logo.jpg")
+        fetchEvents("http://localhost:8080/hackerrank" , "/frontend/images/hackerrank-logo.jpg")
 });
 //codecheff
 codecheff.addEventListener("click",()=>{
-        fetchEvents("http://localhost:8080/codecheff" , "/images/codechef-logo-.jpg")
+        fetchEvents("http://localhost:8080/codecheff" , "/frontend/images/codechef-logo-.jpg")
 });
 //codeforce 
 codeforces.addEventListener("click",()=>{
-        fetchEvents("http://localhost:8080/codeforces" , "/images/CodeForces_Cover.jpg")
+        fetchEvents("http://localhost:8080/codeforces" , "/frontend/images/CodeForces_Cover.jpg")
 });
 
 
@@ -344,7 +345,7 @@ function savedEvents(title,platform,deadline,link){
      })
      .then(response => response.json())
      .then(data =>{
-        if (data === true) {
+        if (data != null) {
             alert("okey book marked ");
         }
         else{

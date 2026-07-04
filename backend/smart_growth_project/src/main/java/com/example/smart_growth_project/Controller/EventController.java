@@ -9,10 +9,12 @@ import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
-@CrossOrigin(origins = "http://127.0.0.1:5501")
+@CrossOrigin(origins = "http://127.0.0.1:5500")
 public class EventController {
 
     @Autowired
@@ -29,11 +31,16 @@ public class EventController {
     //register and Login
     @PostMapping("/register")
     public ResponseEntity<?> addUser(@RequestBody User_Details user){
+        Map<String , String > result = new HashMap<>();
        if( service.addUser(user) != null){
-           return  new ResponseEntity<>("user registration done ", HttpStatus.CREATED);
+           result.put("status","200");
+           result.put("message ","success");
+           return  new ResponseEntity<>(result, HttpStatus.CREATED);
        }
        else{
-           return new ResponseEntity<>("Invalid Input ",HttpStatus.BAD_REQUEST);
+           result.put("status","404");
+           result.put("message","not found ");
+           return new ResponseEntity<>(result,HttpStatus.BAD_REQUEST);
        }
 
     }
@@ -41,11 +48,18 @@ public class EventController {
     //login
     @PostMapping("/login")
     public ResponseEntity<?> loginUser(@RequestParam String email,@RequestParam String password){
+        Map<String,String> result = new HashMap<>();
         if(service.userLogin(email,password)){
-            return ResponseEntity.status(HttpStatus.ACCEPTED).body("User Found ");
+
+            result.put("status","200");
+            result.put("message","User Found ");
+
+            return ResponseEntity.ok(result);
         }
         else{
-            return  ResponseEntity.status(HttpStatus.NOT_FOUND).body("User Not Found ");
+            result.put("status", "404");
+            result.put("message", "User Not Found");
+            return  ResponseEntity.status(HttpStatus.NOT_FOUND).body(result);
         }
     }
 

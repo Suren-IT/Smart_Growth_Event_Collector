@@ -28,7 +28,7 @@ function createPieChart(event){
     //2.loop through every element and store 
     event.forEach(event=>{
 
-        let name = event.name || event.resource?.name ||
+        let name = event.name || event.resource?.name ||    
         event.host || "undefined";
 
         //store the values in object 
@@ -311,7 +311,7 @@ function thismonth(event) {
 
         let mounthnumber = event.start?.split("T")[0].slice(6,8);
         if (mounthnumber  == month) {
-            console.log(monthCount);
+            // console.log(monthCount);
             eventCount+=1;
         }
 

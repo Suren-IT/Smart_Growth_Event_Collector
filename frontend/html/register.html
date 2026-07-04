@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/frontend/css/style.css">
 </head>
 <body>
 
@@ -47,7 +47,7 @@
 
                 </table>
                 <hr class="line">
-                <a href="" class="logintag">Already a member ?</a>
+                <a href="login.html" class="logintag">Already a member ?</a>
 
         </form>
 
@@ -112,7 +112,8 @@
                 .then((data)=>{
 
                     //if true then move to login page 
-                    if(data === true){
+                    if(data.status =="200"){
+
                         window.location.href = "login.html";
                     }
                     else{
@@ -120,6 +121,7 @@
                     }
                 })
                 .catch(error =>{
+                    console.log(error);
                     alert("Error occurs");
                 })
             })

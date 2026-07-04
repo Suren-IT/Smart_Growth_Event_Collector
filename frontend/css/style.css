@@ -1,0 +1,118 @@
+/* Universal  */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* register page design */
+
+body{
+    background-image: url("/frontend/images/loginbg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 30px;
+}
+
+.registerbody{
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.registerform{
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    color: aliceblue;
+    padding: 24px 30px;
+    border-radius: 16px;
+    background: rgba(10, 10, 25, 0.25);
+    backdrop-filter: blur(2px);
+}
+
+#registerhead{
+    align-items: center;
+    justify-content: center;
+    position: static;
+    bottom: 0;
+    color: aliceblue;
+    margin-bottom: 30px;
+    font-size: 26px;
+}
+
+.formtable tr{
+    height: 55px;
+}
+
+.formtable tr td label{
+    color: aliceblue;
+    font-size: 14px;
+    padding-right: 16px;
+    white-space: nowrap;
+}
+
+.formtable tr td input{
+    border-radius: 12px;
+    outline: none;
+    cursor: text;
+    border: 1px solid black;
+    padding: 8px 12px;
+    width: 220px;
+}
+
+.line{
+    border: none;
+    height: 3px;
+    background: linear-gradient(to right, #C77DFF, #8A2BE2, #0B0C10);
+    margin: 24px 0;
+}
+
+.registerbody button{
+    height: 34px;
+    width: 90px;
+    border-radius: 12px;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    padding: 5px;
+    position: static;
+    top: 0;
+    margin-top: 16px;
+    background-color: lightskyblue;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+}
+
+.registerbody button:hover{
+    background-color: #7ec2e0;
+}
+
+.logintag{
+    text-decoration: none;
+    color: aliceblue;
+    position: static;
+    left: 0;
+    display: block;
+    text-align: center;
+    font-size: 14px;
+}
+
+.logintag:hover{
+    color: #0B0C10;
+}
+
+.skillcheckbox{
+    width: auto;
+    padding: 10px 16px;
+    font-size: 13px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    position: static;
+    right: 0;
+    border-radius: 12px;
+    color: aliceblue;
+    line-height: 2.2;
+}
