@@ -13,9 +13,9 @@ window.addEventListener("load",loadDashboard);
     createUpcoming(events);
     createInfoBoxes(events);
     //to calclulate the saved events 
-    const count = await savedEvents();
-     document.getElementById("savedevent").innerHTML =count; 
     // console.log(events);
+        appliedEvents();
+       savedEvents(); 
    
 }
 //PIE CHART
@@ -203,7 +203,7 @@ function createUpcoming(events) {
         return new Date(a.date || a.start) - new Date(b.date || b.start);
     });
 
-    console.log(upcoming);
+    // console.log(upcoming);
 
     // 3. TAKE ONLY TOP 5 (LIKE DASHBOARD CARD STYLE)
     upcoming = upcoming.slice(-5);
@@ -228,11 +228,11 @@ function createUpcoming(events) {
                     <p>${date.toDateString()}</p>
                 </div>
                 <div>
-                    <button id="eventlink"><a href="${event.href}">${event.resource.name || "Event"}</a></button>
+                    <button id="eventlink">${event.resource.name || "Event"}</button>
                 </div>
                 
                 <div>
-                    <button id="viewid">view </button>
+                    <button id="viewid"><a href="${event.href} ">VIEW</a></button>
                 </div>
                 
                 
@@ -265,8 +265,8 @@ function createInfoBoxes(event){
         <div class="classifer-card">
                     <div class="cardright"><i  class="fa-regular fa-bell"></i></div>
                     <div class="cardleft">
-                        <p>This month</p>
-                        <p>${thismonth(event)}</p>
+                        <p>Applied Events</p>
+                        <p id="appliedeventid" ">0</p>
                         <p>event this month</p>
                     </div>
 
@@ -275,7 +275,7 @@ function createInfoBoxes(event){
                     <div class="cardright"><i  class="fa-regular fa-bell"></i></div>
                     <div class="cardleft">
                         <p>Saved event</p>
-                        <p id="savedevent"></p>
+                        <p id="savedEventid">0</p>
                         <p>your saved event</p>
                     </div>
 
@@ -323,18 +323,46 @@ function thismonth(event) {
 
 // SAVED EVENTS
 
-async function savedEvents() {
-    try {
-        const response = await fetch(
-            `http://localhost:8080/finduser/${localStorage.getItem("email")}`
-        );
-
-        const data = await response.json();
-
-        return data.length;
-
-    } catch (error) {
-        console.error(error);
-        return 0;
+function savedEvents() {
+    let savedEventid = document.getElementById("savedEventid");
+    if (!savedEventid) {
+        console.log("NULL Values")
+        return;
     }
+    fetch(`http://localhost:8080/finduserlist/${localStorage.getItem("email")}`)
+   .then(response => response.json())
+   .then(data =>{
+     if (data){
+
+        savedEventid.innerHTML += data;
+     }
+     else{
+        return 0;
+     }
+   })
+   .catch(error =>{
+    console.log(error);
+   })
+}
+
+
+function appliedEvents() {
+    
+let appliedeventid = document.getElementById("appliedeventid");
+if(!appliedEvents){
+    console.log("wrong");
+    return;
+
+}
+   fetch(`http://localhost:8080/countofApplied/${localStorage.getItem("email")}`)
+   .then(response => response.json())
+   .then(data =>{
+     if (data){
+        
+        appliedeventid.innerText=data;
+     }
+     else{
+        return 0;
+     }
+   })
 }

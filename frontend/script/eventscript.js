@@ -5,8 +5,10 @@ window.addEventListener("load",()=>{
     loadAllEvents();
     console.log("loading is ended ")
 
+    
 
 });
+let email = localStorage.getItem("email");
 let allEvent=[];
 //HOME PAGE WHEN IT IS LOADING 
 async function loadAllEvents() {
@@ -148,13 +150,13 @@ function renderMixedEvents(events){
                 <div class="lastpage">
 
                     <div class="btn1">
-                        <button>
-                            Details
+                        <button onclick="callPlatform('${eventdetails.resource.name}')">
+                                Details
                         </button>
                     </div>
 
                     <div class="btn2">
-                        <button onclick="window.open('${eventdetails.href}','_blank')">
+                        <button onclick="appliedData('${email}', '${eventdetails.event}', 'applied'); window.open('${eventdetails.href}', '_blank')">
                             Apply
                         </button>
                     </div>
@@ -215,6 +217,8 @@ async function fetchEvents(url,logo) {
     }
 }
 
+ 
+
 function renderEvents(events,logo){
     let html="";
     events.forEach(eventdetails =>{
@@ -224,7 +228,9 @@ function renderEvents(events,logo){
                     <div class="toppage">
                         <div class="top1"><img src="${logo}" alt=""></div>
                         <div class="top3"><h3>${eventdetails.host ||eventdetails.resource.name || "NO Platform"}</h3></div>
-                        <div class="top2"><i class="fa-solid fa-magnifying-glass"></i></div>
+                         <div class="top2">
+                                <button onclick="savedEvents('${eventdetails.event}', '${eventdetails.resource?.name}', '${eventdetails.start}', '${eventdetails.href}')"><i class="fa-regular fa-bookmark"></i></button>
+                         </div>
                         
                     </div>
                     <div class="middlepage">
@@ -246,17 +252,19 @@ function renderEvents(events,logo){
                     </div>
                     <div class="lastpage">
 
-                    <div class="btn1">
-                        <button>
-                            Details
-                        </button>
-                    </div>
+                        <div class="btn1">
+                             <button onclick="callPlatform('${eventdetails.resource.name}')">
+                                Details
+                            </button>
+                        </div>
 
-                    <div class="btn2">
-                        <button onclick="window.open('${eventdetails.href}','_blank')">
-                            Apply
-                        </button>
-                    </div>
+                        <div class="btn2">
+                            <button onclick="appliedData('${email}', '${eventdetails.event}', 'applied'); window.open('${eventdetails.href}', '_blank')">
+                                Apply
+                            </button>
+                        </div>
+
+                </div>
 
                 </div>
                 </div>
@@ -329,6 +337,7 @@ function savedEvents(title,platform,deadline,link){
 
     let email = localStorage.getItem("email");
     
+    
     fetch("http://localhost:8080/addevent" , {
         method: "POST",
         headers: {                    
@@ -345,10 +354,12 @@ function savedEvents(title,platform,deadline,link){
      })
      .then(response => response.json())
      .then(data =>{
-        if (data != null) {
+        if (data.status === "200") {
+            
             alert("okey book marked ");
         }
         else{
+            
             alert("something went wrong ");
         }
      })
@@ -356,4 +367,59 @@ function savedEvents(title,platform,deadline,link){
         console.error("Fetch error:", err);
         alert("Network error.");
     });
+}
+
+function appliedData(email,eventname,status){
+
+    fetch("http://localhost:8080/applied",
+        {
+            method: "POST",
+            headers:{
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                email: email,
+                eventName: eventname,
+                status: status,
+                
+            })
+        })
+        .then(response => response.json())
+        .then(data =>{
+            if(data.status === "200"){
+                console.log(status);
+                confirm("data inserted");
+            }
+            else{
+                alert("something happens ")
+            }
+        })
+        .catch(error =>{
+            console.log(error);
+            alert("error occurs");
+        })
+}
+
+function callPlatform(platform){
+    console.log(platform);
+
+    switch(platform.toLowerCase()){
+        case "leetcode":
+            window.open("https://leetcode.com");
+            break;
+        case "codechef":
+            window.open("https://codechef.com");
+            break;
+        case "hackerearth":
+            window.open("https://hackerearth.com");
+            break;
+        case "hackerrank":
+            window.open("https://hackerrank.com");
+            break;
+        case "codeforces":
+            window.open("https://codeforces.com");
+            break;
+        default:
+            console.log("error occurs ");
+    }
 }

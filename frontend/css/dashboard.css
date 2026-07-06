@@ -504,3 +504,10 @@ body{
     font-weight: 600;
     cursor: pointer;
 }
+.upcoming-card #viewid  a{
+    list-style: none;
+    color: white;
+    text-decoration: none;
+
+
+}

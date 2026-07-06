@@ -1,6 +1,7 @@
 package com.example.smart_growth_project.Controller;
 
 import com.example.smart_growth_project.Service.EventService;
+import com.example.smart_growth_project.entityModel.Application_Table;
 import com.example.smart_growth_project.entityModel.Saved_Event_Details;
 import com.example.smart_growth_project.entityModel.User_Details;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@CrossOrigin(origins = "http://127.0.0.1:5500")
+    @CrossOrigin(origins = "http://127.0.0.1:5500")
 public class EventController {
 
     @Autowired
@@ -106,11 +107,11 @@ public class EventController {
 
 
     // Fetch events by the email
-    @GetMapping("/finduser/{email}")
+    @GetMapping("/finduserlist/{email}")
     public ResponseEntity<?> getUserbyEmail(@PathVariable("email") String email){
-         Saved_Event_Details s1 =  service.getSavedEventByUserEmail(email);
-         if(s1!=null){
-             return ResponseEntity.ok(s1);
+         List<Saved_Event_Details> s1 =  service.getSavedEventByUserEmail(email);
+         if(!s1.isEmpty()){
+             return ResponseEntity.ok(s1.size());
          }
          else{
              return ResponseEntity.notFound().build();
@@ -118,6 +119,28 @@ public class EventController {
 
     }
 
+    //applied jobs
+    @PostMapping("/applied")
+    public ResponseEntity<?> getAppliedJob(@RequestBody  Application_Table data){
+        Application_Table a1 = service.getAppliedJobDetails(data);
+        Map<String , String > result = new HashMap<>();
+        if( a1 !=null ){
+            result.put("status","200");
+            result.put("message","data inserted");
+            return  new ResponseEntity<>(result, HttpStatus.CREATED);
+
+        }
+        return  new ResponseEntity<>(result, HttpStatus.NOT_ACCEPTABLE);
+    }
+
+    //count of applied events
+    @GetMapping("/countofApplied/{email}")
+    public ResponseEntity<?> getAppliedEvents(@PathVariable String email){
+        Map<String , String > result = new HashMap<>();
+        long count = service.getCountofEvents(email);
+        return new ResponseEntity<>(count,HttpStatus.ACCEPTED);
+
+    }
 
 
 

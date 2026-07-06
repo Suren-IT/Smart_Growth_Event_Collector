@@ -1,9 +1,11 @@
 package com.example.smart_growth_project.Service;
 
 
+import com.example.smart_growth_project.Repository.AppliedRepository;
 import com.example.smart_growth_project.Repository.EventRepository;
 import com.example.smart_growth_project.Repository.SkillsRepository;
 import com.example.smart_growth_project.Repository.UserRepository;
+import com.example.smart_growth_project.entityModel.Application_Table;
 import com.example.smart_growth_project.entityModel.Saved_Event_Details;
 import com.example.smart_growth_project.entityModel.Skill_Details;
 import com.example.smart_growth_project.entityModel.User_Details;
@@ -26,6 +28,9 @@ public class EventService {
 
     @Autowired
     EventRepository eventrepo;
+
+    @Autowired
+    AppliedRepository apprepo;
 
 
     //add user
@@ -68,13 +73,23 @@ public class EventService {
 
 
 
-    public Saved_Event_Details getSavedEventByUserEmail(String email) {
+    public List<Saved_Event_Details> getSavedEventByUserEmail(String email) {
 
         return  eventrepo.findByUseremail(email);
     }
 
     public Saved_Event_Details checkUser(Integer userId) {
         return eventrepo.findById(userId).orElse(null);
+    }
+
+    public Application_Table getAppliedJobDetails(Application_Table data) {
+
+        return  apprepo.save(data);
+    }
+
+    public long getCountofEvents(String email) {
+
+        return apprepo.countByEmail(email);
     }
 }
 

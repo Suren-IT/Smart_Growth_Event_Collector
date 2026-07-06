@@ -1,9 +1,6 @@
 package com.example.smart_growth_project.entityModel;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,9 +11,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Application_Table {
 
-    @Id
-    private Integer userid;
-    private Integer eventid;
+    @Id@GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer appllicationId;
+
+    @Column(nullable = false)
+    private String email;
+    private String eventName;
     private String status;
 }
 

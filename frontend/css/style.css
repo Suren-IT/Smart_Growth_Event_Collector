@@ -106,13 +106,19 @@ body{
 }
 
 .skillcheckbox{
-    width: auto;
-    padding: 10px 16px;
+    width: 90px;
+    padding: 14px 20px;
     font-size: 13px;
     border: 1px solid rgba(255, 255, 255, 0.5);
-    position: static;
-    right: 0;
     border-radius: 12px;
     color: aliceblue;
-    line-height: 2.2;
+          /* row-gap column-gap */
+}
+.skillcheckbox label{
+    font-size: medium;
+}
+
+.skillcheckbox input[type="checkbox"]{
+    position: relative;
+    bottom: 15px;
 }
