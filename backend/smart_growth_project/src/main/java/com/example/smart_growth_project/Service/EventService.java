@@ -10,6 +10,7 @@ import com.example.smart_growth_project.entityModel.Saved_Event_Details;
 import com.example.smart_growth_project.entityModel.Skill_Details;
 import com.example.smart_growth_project.entityModel.User_Details;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -90,6 +91,11 @@ public class EventService {
     public long getCountofEvents(String email) {
 
         return apprepo.countByEmail(email);
+    }
+
+    public List<Saved_Event_Details> getSavedEventAll() {
+
+        return eventrepo.findAll();
     }
 }
 

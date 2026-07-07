@@ -142,6 +142,17 @@ public class EventController {
 
     }
 
+    @GetMapping("/savedevents/{email}")
+    public ResponseEntity<?> getSavedEvent(@PathVariable String email){
+        List<Saved_Event_Details>  list = service.getSavedEventByUserEmail(email);
+         if (!list.isEmpty()){
+
+            return ResponseEntity.ok(list);
+        }else {
+             return ResponseEntity.notFound().build();
+         }
+    }
+
 
 
 

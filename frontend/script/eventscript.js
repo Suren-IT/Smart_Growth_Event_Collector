@@ -404,19 +404,19 @@ function callPlatform(platform){
     console.log(platform);
 
     switch(platform.toLowerCase()){
-        case "leetcode":
+        case "leetcode.com":
             window.open("https://leetcode.com");
             break;
-        case "codechef":
+        case "codechef.com":
             window.open("https://codechef.com");
             break;
-        case "hackerearth":
+        case "hackerearth.com":
             window.open("https://hackerearth.com");
             break;
-        case "hackerrank":
+        case "hackerrank.com":
             window.open("https://hackerrank.com");
             break;
-        case "codeforces":
+        case "codeforces.com":
             window.open("https://codeforces.com");
             break;
         default:
