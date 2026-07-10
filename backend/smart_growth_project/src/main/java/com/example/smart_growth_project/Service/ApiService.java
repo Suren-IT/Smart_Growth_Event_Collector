@@ -5,6 +5,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -25,7 +26,8 @@ public class ApiService {
     //values and apikey
     String username = "Suren";
 
-    String apikey="894c43f85440802f954583559b2abc1a12731051";
+    @Value("${clist.api.key}")
+    private String apiKey;
 
     @Autowired
     private RestTemplate restTemplate;
@@ -35,13 +37,13 @@ public class ApiService {
     public String getApiData() {
         String api="https://clist.by/api/v4/contest/" +
                 "?username="+username
-                +"&api_key="+apikey
+                +"&api_key="+apiKey
                 +"&upcoming=true"+
                 "&format=json"+
                 "&order_by=start"+
                 "&limit=50";
         HttpHeaders headers = new HttpHeaders();
-        headers.set("Authorization","ApiKey "+username+":"+apikey);
+        headers.set("Authorization","ApiKey "+username+":"+apiKey);
         HttpEntity<String> entity = new HttpEntity<>(headers);
         ResponseEntity<String> response = restTemplate.exchange(api,
                 HttpMethod.GET,
@@ -84,7 +86,7 @@ public class ApiService {
     public String getHackerEarth(int id) {
         String api = "https://clist.by/api/v1/contest/"
                 + "?username=" + username
-                + "&api_key=" + apikey
+                + "&api_key=" + apiKey
                 + "&resource__id="+id
                 + "&upcoming=true"
                 + "&format=json"
@@ -109,7 +111,7 @@ public class ApiService {
         //get the api data
         String api = "https://clist.by/api/v1/contest/"
                 + "?username=" + username
-                + "&api_key=" + apikey
+                + "&api_key=" + apiKey
                 + "&resource__id="+id
                 + "&upcoming=true"
                 + "&format=json"

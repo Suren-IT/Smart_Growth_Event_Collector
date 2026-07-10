@@ -1,0 +1,14 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="SmartGrowthProjectApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <envs>
+      <env name="DB_USERNAME" value="root" />
+      <env name="DB_PASSWORD" value="suren123" />
+      <env name="CLIST_API_KEY" value="894c43f85440802f954583559b2abc1a12731051" />
+    </envs>
+    <module name="smart_growth_project" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.smart_growth_project.SmartGrowthProjectApplication" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
