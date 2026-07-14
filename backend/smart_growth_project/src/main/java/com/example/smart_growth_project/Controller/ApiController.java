@@ -1,6 +1,7 @@
 package com.example.smart_growth_project.Controller;
 
 import com.example.smart_growth_project.Service.ApiService;
+import com.example.smart_growth_project.exceptionpkg.ExternalApiException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -29,7 +30,7 @@ public class ApiController {
         if(s1!=null){
             return ResponseEntity.ok(s1);
         }
-        return ResponseEntity.notFound().build();
+        throw new ExternalApiException("External Api is not working ");
     }
 
     //leetcode
@@ -40,7 +41,7 @@ public class ApiController {
         if(s1!=null){
             return ResponseEntity.ok(s1);
         }
-        return ResponseEntity.notFound().build();
+        throw new ExternalApiException("External Api is not working ");
     }
 
     //hackerrank
@@ -51,7 +52,7 @@ public class ApiController {
         if(s1!=null){
             return ResponseEntity.ok(s1);
         }
-        return ResponseEntity.notFound().build();
+        throw new ExternalApiException("External Api is not working ");
     }
 
     //codeCheff
@@ -62,7 +63,7 @@ public class ApiController {
         if(s1!=null){
             return ResponseEntity.ok(s1);
         }
-        return ResponseEntity.notFound().build();
+        throw new ExternalApiException("External Api is not working ");
     }
     @GetMapping("/codeforces")
     public ResponseEntity<?> getCodeForces(){
@@ -71,7 +72,7 @@ public class ApiController {
         if(s1!=null){
             return ResponseEntity.ok(s1);
         }
-        return ResponseEntity.notFound().build();
+        throw new ExternalApiException("External Api is not working ");
     }
 
     //get the api content with the restTempplate for learning practice
@@ -81,7 +82,7 @@ public class ApiController {
         if(s1!=null){
             return ResponseEntity.ok(s1);
         }
-        return ResponseEntity.notFound().build();
+        throw new ExternalApiException("External Api is not working ");
 
 
     }
@@ -95,7 +96,7 @@ public class ApiController {
         if(s1!=null){
             return ResponseEntity.ok(s1);
         }
-        return ResponseEntity.notFound().build();
+        throw new ExternalApiException("External Api is not working ");
     }
 
     //get data using Scrapping

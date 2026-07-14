@@ -4,6 +4,9 @@ import com.example.smart_growth_project.Service.EventService;
 import com.example.smart_growth_project.entityModel.Application_Table;
 import com.example.smart_growth_project.entityModel.Saved_Event_Details;
 import com.example.smart_growth_project.entityModel.User_Details;
+import com.example.smart_growth_project.exceptionpkg.ExternalApiException;
+import com.example.smart_growth_project.exceptionpkg.GlobalExceptionHandler;
+import com.example.smart_growth_project.exceptionpkg.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -21,6 +24,10 @@ public class EventController {
     @Autowired
     EventService service;
 
+    @Autowired
+    GlobalExceptionHandler ex;
+
+    private   Exception ex2= new RuntimeException();
     /*user flow
     *register/login
     * select skills
@@ -39,9 +46,8 @@ public class EventController {
            return  new ResponseEntity<>(result, HttpStatus.CREATED);
        }
        else{
-           result.put("status","404");
-           result.put("message","not found ");
-           return new ResponseEntity<>(result,HttpStatus.BAD_REQUEST);
+
+            throw   new RuntimeException("Unable to register the Event  ");
        }
 
     }
@@ -58,9 +64,8 @@ public class EventController {
             return ResponseEntity.ok(result);
         }
         else{
-            result.put("status", "404");
-            result.put("message", "User Not Found");
-            return  ResponseEntity.status(HttpStatus.NOT_FOUND).body(result);
+
+            throw   new ResourceNotFoundException("Unable to Login");
         }
     }
 
@@ -75,7 +80,7 @@ public class EventController {
             return  ResponseEntity.ok("Success");
         }
         else{
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User Not Found");
+            throw   new ResourceNotFoundException("Unable to pick skill");
         }
 
     }
@@ -89,7 +94,7 @@ public class EventController {
             return ResponseEntity.status(HttpStatus.ACCEPTED).body(list);
         }
         else{
-            return new ResponseEntity<>("Something went wrong ",HttpStatus.BAD_REQUEST);
+            throw   new ExternalApiException("External Api is not working ... !");
         }
     }
 
@@ -97,11 +102,11 @@ public class EventController {
     @GetMapping("/allevents/{eventname}")
     public ResponseEntity<?> getAllEvents(@PathVariable String eventname){
         List<Saved_Event_Details> s1 =  service.getEventByName(eventname);
-        if(s1 != null){
+        if(!s1.isEmpty()){
             return ResponseEntity.ok(s1);
         }
         else{
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Event Not found ");
+            throw   new ExternalApiException("External Api is not working / There is No saved event ... !");
         }
     }
 
@@ -114,7 +119,7 @@ public class EventController {
              return ResponseEntity.ok(s1.size());
          }
          else{
-             return ResponseEntity.notFound().build();
+             throw   new ResourceNotFoundException("Can't find your email");
          }
 
     }
@@ -130,7 +135,7 @@ public class EventController {
             return  new ResponseEntity<>(result, HttpStatus.CREATED);
 
         }
-        return  new ResponseEntity<>(result, HttpStatus.NOT_ACCEPTABLE);
+        throw   new ExternalApiException("External Api is not working ... !");
     }
 
     //count of applied events
@@ -149,7 +154,7 @@ public class EventController {
 
             return ResponseEntity.ok(list);
         }else {
-             return ResponseEntity.notFound().build();
+             throw   new ResourceNotFoundException("There is no saved event on this  Email ... !");
          }
     }
 

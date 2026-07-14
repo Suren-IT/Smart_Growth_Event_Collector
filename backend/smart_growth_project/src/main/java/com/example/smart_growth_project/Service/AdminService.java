@@ -31,7 +31,6 @@ public class AdminService {
     public void deleteEvent(Integer eventid) {
 
          eventrepo.deleteById(eventid);
-
     }
 
     public boolean updateEvent(Saved_Event_Details event) {

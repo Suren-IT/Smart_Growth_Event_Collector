@@ -2,6 +2,7 @@ package com.example.smart_growth_project.Controller;
 
 import com.example.smart_growth_project.Service.AdminService;
 import com.example.smart_growth_project.entityModel.Saved_Event_Details;
+import com.example.smart_growth_project.exceptionpkg.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -42,13 +43,10 @@ public class AdminController {
                         .body(result);
             }
             else{
-                result.put("status","404");
-                result.put("message","sorry Invaid input ");
-                return ResponseEntity.badRequest()
-                        .body(result);
+                throw new RuntimeException("Unable to Store the event ... !");
             }
         }
-        return ResponseEntity.badRequest().body(result);
+        throw new RuntimeException("Unable to Store the event ... !");
 
     }
 
@@ -65,9 +63,7 @@ public class AdminController {
             return ResponseEntity.ok(result);
         }
         else{
-            result.put("status","404");
-            result.put("message"," data not found  ");
-            return  new ResponseEntity<>(result,HttpStatus.NOT_FOUND);
+            throw new ResourceNotFoundException("There is no event to delete ");
         }
 
     }
@@ -88,9 +84,7 @@ public class AdminController {
                 service.updateEvent(event);
                 return ResponseEntity.ok(result);
             }else{
-                result.put("status","404");
-                result.put("message","Data not found  ");
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(result);
+                throw new ResourceNotFoundException("There is no event to update");
             }
         }
         result.put("status","200");
@@ -111,9 +105,7 @@ public class AdminController {
             return ResponseEntity.status(HttpStatus.ACCEPTED).body(s1);
         }
         else{
-            result.put("status","404");
-            result.put("message","Data not found  ");
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(result);
+            throw new ResourceNotFoundException("There is no event ");
         }
     }
 
